@@ -1,1 +1,1 @@
-# Cradle-Intelligence-CI-
+# Cradle Intelligence (CI)
