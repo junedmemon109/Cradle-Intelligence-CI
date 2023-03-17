@@ -22,8 +22,8 @@ The uniqueness of the proposed Smart Cradle System lies in its integration of Io
 4. Grove Sound Sensor
 5. USB Camera
 6. Servo SG90 Motor
-7. 2 Grove connectors 
-8. 3 Male to Female Cable
+7. Grove connectors (2)
+8. Jumper Wires (3 Male to Female Cable)
 
 **Software Requirements:**
 1. Fing (Network scanner)
@@ -31,4 +31,9 @@ The uniqueness of the proposed Smart Cradle System lies in its integration of Io
 3. VNC Viewer 
 4. Raspbian OS
 5. Thony Python IDE 
+
+
+**Video Link:**
+
+https://drive.google.com/file/d/1D_8jZNWEe4xTwI0gENs-sdo_4yVXH-oH/view?usp=sharing
 
