@@ -13,3 +13,22 @@ Developing a Smart Cradle System using IoT technology, equipped with a webcam, t
 **Uniqueness of the Proposed Solution:**
 
 The uniqueness of the proposed Smart Cradle System lies in its integration of IoT technology, equipped with a webcam, temperature & humidity sensors, and automatic swinging capabilities, which provides a comprehensive and convenient solution for parents to monitor and ensure the proper care for their newborns.
+
+
+**Hardware Requirements:**
+1. Raspberry Pi 4
+2. GrovePi
+3. Grove DHT11 Temperature and Humidity Sensor
+4. Grove Sound Sensor
+5. USB Camera
+6. Servo SG90 Motor
+7. 2 Grove connectors 
+8. 3 Male to Female Cable
+
+**Software Requirements:**
+1. Fing (Network scanner)
+2. PuTTY
+3. VNC Viewer 
+4. Raspbian OS
+5. Thony Python IDE 
+
