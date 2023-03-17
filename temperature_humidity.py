@@ -1,6 +1,6 @@
 import grovepi
 
-# Connect the temperature and humidity sensor to digital port D7
+# Connect the DHT11 Temperature and Humidity sensor to digital port D7
 sensor = 7
 
 def get_temperature():
