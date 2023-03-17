@@ -20,7 +20,7 @@ def run_temperature_humidity():
             print(f'Temp: {temp} C, Hum: {hum}%')
             time.sleep(5)
     except:
-        print('Exception')
+        print('Exception in DHT11 Temperature and Humidity Sensor Module!')
 
 def run_webcam():
     start_webcam()
@@ -49,14 +49,14 @@ def run_sound_intensity():
                 swing_timer.start()
             
             # If sound goes below threshold, stop the swing and cancel the timer
-            if sound <= 500 and swing_timer:
+            if sound <= 700 and swing_timer:
                 print('Crying stopped. Stopping swing...')
                 swing_timer.cancel()
                 stop_swing()
                 
             time.sleep(0.1)
     except:
-        print('Exception')
+        print('Exception in sound sensor module!')
                 
 
 def start_swing():
@@ -73,31 +73,12 @@ def stop_swing():
     servo.ChangeDutyCycle(0)
     
 def main():
-
-    # Set the backlight color to green and turn on the display
-    setRGB(0, 255, 0)
-
-    # Show welcome message for 5 seconds
-    setText("Welcome! \nTeam Id: 4705")
-    time.sleep(2)
-    setText("Cradle Intelligence Project!")
-    time.sleep(2)
-
-    # Change backlight color to blue and show another message for 3 seconds
-    setRGB(0, 0, 255)
-    setText("So let's start!")
-    time.sleep(2)
-
-    # Turn off the display
-    setRGB(0, 0, 0)
-    setText('')
-    time.sleep(1)
     
-    #webcam_thread = threading.Thread(target=run_webcam)
+    webcam_thread = threading.Thread(target=run_webcam)
     sound_thread = threading.Thread(target=run_sound_intensity)
     temperature_thread = threading.Thread(target=run_temperature_humidity)
 
-    #webcam_thread.start()
+    webcam_thread.start()
     sound_thread.start()
     temperature_thread.start()
     
