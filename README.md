@@ -37,3 +37,7 @@ The uniqueness of the proposed Smart Cradle System lies in its integration of Io
 
 https://drive.google.com/file/d/1D_8jZNWEe4xTwI0gENs-sdo_4yVXH-oH/view?usp=sharing
 
+https://github.com/Shreyansh81/House-Price-Prediction/raw/main/Housing%20Information.csv
+
+https://raw.githubusercontent.com/AgustinCdeCelis/Cancer-Logistic-Regression/main/data.csv
+
