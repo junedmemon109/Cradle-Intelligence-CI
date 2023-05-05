@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cradle Intelligence (CI)</title>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-wrapper #fbc02d blue darken-2">
+      <a href="#" class="brand-logo">Cradle Intelligence (CI)</a>
+      <ul id="nav-mobile" class="right">
+        <li id="loginli"><a class="modal-trigger" href="#modal2">Login</a></li>
+        <li id="signupli"><a class="modal-trigger" href="#modal1">Signup</a></li>
+        <li id="editli"><a class="modal-trigger" href="#modal3">Edit Details</a></li>
+        <li id="logoutli"><a onclick="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Signup Modal -->
+  <div id="modal1" class="modal">
+    <center>
+      <div class="modal-content">
+        <h4>Signup</h4>
+        <form autocomplete="off" onsubmit="signup(event)">
+          <input type="email" id="signupEmail" placeholder="email" />
+          <input type="password" id="signupPassword" placeholder="password" />
+          <button class="btn waves-effect #fbc02d blue darken-2" type="submit">submit</button>
+        </form>
+        <button class="btn waves-effect blue" onclick="loginWithGoogle()">Login with google</button>
+      </div>
+    </center>
+  </div>
+
+  <!--login Modal -->
+  <div id="modal2" class="modal">
+    <center>
+      <div class="modal-content">
+        <h4>Login</h4>
+        <form autocomplete="off" onsubmit="login(event)">
+          <input type="email" id="loginEmail" placeholder="email" />
+          <input type="password" id="loginPassword" placeholder="password" />
+          <button class="btn waves-effect #fbc02d blue darken-2" type="submit">submit</button>
+        </form>
+        <button class="btn waves-effect blue" onclick="loginWithGoogle()">Login with google</button>
+      </div>
+    </center>
+  </div>
+
+  <!--edit profile -->
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <center>
+        <h4 style="background-color:#1976D2; padding:10px; color:white; border-radius:2px;">Edit your Details</h4>
+      </center><br><br>
+      <center><img id="proimg" class="circle" src="./assets/noimage.png" alt="noimage"
+          style="width: 17%; height: auto;" /></center>
+      <div class="file-field input-field">
+        <div class="btn #fbc02d blue darken-2">
+          <span>Update Profile Photo</span>
+          <center><input type="file" accept="image/*" onchange="uploadImage(event)" /></center>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <form autocomplete="off" id="editProfile" onsubmit="updateUserProfile(event)">
+        <br><br><span style="background-color:#1976D2; padding:10px; color:white; border-radius:2px;">UPDATE
+          EMAIL</span>
+        <input type="email" name="profileEmail" placeholder="email" /><br><br>
+        <span style="background-color:#1976D2; padding:10px; color:white; border-radius:2px;">UPDATE USERNAME</span>
+        <input type="text" name="name" placeholder="name" /><br><br>
+        <span style="background-color:#1976D2; padding:10px; color:white; border-radius:2px;">UPDATE PHONE NO</span>
+        <input type="text" name="phoneno" placeholder="phoneno" /><br><br>
+        <center><button class="btn waves-effect #fbc02d blue darken-2" type="submit">Update</button></center>
+      </form>
+    </div>
+  </div>
+
+  <div class="center">
+    <!--h1>your account details</h1-->
+    <!--img id="proimg" class="circle" src="./assets/noimage.png" alt="noimage" style="width: 50%;height: auto;" /-->
+    <div class="userDetails"></div>
+  </div>
+
+  <table id="table" style="display: none;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+
+    <tbody id="tbody">
+    </tbody>
+  </table>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+    });
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBN1A2igFG16p0ALEqAspQPAVP4i4px6zc",
+      authDomain: "cradle-intelligence.firebaseapp.com",
+      databaseURL: "https://cradle-intelligence-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "cradle-intelligence",
+      storageBucket: "cradle-intelligence.appspot.com",
+      messagingSenderId: "87397280398",
+      appId: "1:87397280398:web:8538a7c5d64c2c5c97f7df",
+      measurementId: "G-ZW52PMT7K5"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script src="./scripts/auth.js"></script>
+  <script src="./scripts/firestore-db.js"></script>
+
+</body>
+
+</html>
