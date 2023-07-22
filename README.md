@@ -35,4 +35,4 @@ The uniqueness of the proposed Smart Cradle System lies in its integration of Io
 
 **Video Link:**
 
-https://drive.google.com/file/d/1D_8jZNWEe4xTwI0gENs-sdo_4yVXH-oH/view?usp=sharing
+https://www.canva.com/design/DAFieibBn0Y/Ldm0tQhVvCvPfO5JumOWCg/watch?utm_content=DAFieibBn0Y
