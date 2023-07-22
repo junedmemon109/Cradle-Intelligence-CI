@@ -8,18 +8,9 @@ import urllib.request as urllib2
 import math
 
 myAPI = 'GI7RJTBX7A2FKNGN' 
-# URL where we will send the data, Don't change it
+# URL where we will send the data
 
 baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI
-
-#import firebase_admin as f
-#from firebase_admin import credentials
-#from firebase_admin import firestore
-
-# Initialize Firebase Admin SDK with service account credentials
-#cred = f.credentials.Certificate('serviceaccount.json')
-#f.initialize_app(cred)
-
 
 
 import pyrebase
@@ -39,7 +30,6 @@ uid = "gKmiSaHtbRNBXd9tVbu0qql0QLq2"
 
 # Create a reference to the user's document in Firestore
 db = firebase.database()
-#db = firebase.firestore()
 
 # Set up the servo motor
 GPIO.setwarnings(False)
@@ -77,7 +67,6 @@ def run_temperature_humidity():
             data = {"temp":temp, "hum":hum}
             
             db.child("users").child(uid).update(data)
-            #db.child("users").update(data)
        
             print(f'Temp: {temp} C, Hum: {hum}%\n')
             time.sleep(5)
@@ -98,11 +87,6 @@ def run_sound_intensity():
         data = {"crying":crying}
         db.child("users").child(uid).update(data)
         
-        # Update the crying field
-        #db.child("users").child(uid).update({
-            #"crying": (f'{crying}')
-        #})
-        
         while True:
             global sound
             sound = get_sound_intensity()
@@ -111,19 +95,7 @@ def run_sound_intensity():
             
             db.child("users").child(uid).update(data)
             
-            '''# Sending the data to thingspeak
-            conn = urllib2.urlopen(baseURL + '&field3=%s' % (sound))
-            print(conn.read())
-            # Closing the connection
-            conn.close()'''
-            
             print(f'Sound Intensity: {sound}\n')
-    
-            # Update the sound field
-            #db.child("users").child(uid).update({
-                #"sound": (f'{sound}')
-            #})
-            
 
             if sound > 300 and sound < 2000:
                 print('Crying detected! Starting swing...')
@@ -132,19 +104,6 @@ def run_sound_intensity():
                 
                 data = {"crying":crying}
                 db.child("users").child(uid).update(data)
-            
-                
-                
-                '''# Sending the data to thingspeak
-                conn = urllib2.urlopen(baseURL + '&field4=1')
-                print(conn.read())
-                # Closing the connection
-                conn.close()'''
-                
-                ## Update the crying field
-                #db.child("users").child(uid).update({
-                    #"crying": (f'{crying}')
-                #})
                 
                 # Start the swing
                 start_swing()
@@ -165,19 +124,6 @@ def run_sound_intensity():
                 
                 data = {"crying":crying}
                 db.child("users").child(uid).update(data)
-            
-                
-                
-                '''# Sending the data to thingspeak
-                conn = urllib2.urlopen(baseURL + '&field4=%0')
-                print(conn.read())
-                # Closing the connection
-                conn.close()'''
-                
-                # Update the crying field
-                #db.child("users").child(uid).update({
-                    #"crying": (f'{crying}')
-                #})
                 
                 swing_timer.cancel()
                 stop_swing()
